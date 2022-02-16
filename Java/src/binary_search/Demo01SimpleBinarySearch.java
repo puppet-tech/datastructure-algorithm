@@ -6,6 +6,6 @@ package org.example.binary_search;
  */
 public class Demo01SimpleBinarySearch {
     public static void main(String[] args) {
-
+        
     }
 }

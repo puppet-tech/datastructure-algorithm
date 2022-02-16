@@ -103,10 +103,8 @@ venv.bak/
 # mypy
 .mypy_cache/
 
-.idea/
+.idea
 .DS_Store
-datastructure-algorithm.iml
-Java/out
 
 # built application files
 *.apk
