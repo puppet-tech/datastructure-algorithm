@@ -8,7 +8,7 @@ import java.util.Arrays;
  * @since 2022/2/5 8:49 下午
  */
 public class QuickSort {
-    public static void quickSort(int[] arr, int start, int end) {
+    public static void solve(int[] arr, int start, int end) {
         if (arr.length <= 1 || arr == null) {
             return;
         }
@@ -35,8 +35,8 @@ public class QuickSort {
             }
         }
         arr[p] = pivot;
-        quickSort(arr, start, p - 1);
-        quickSort(arr, p + 1, end);
+        solve(arr, start, p - 1);
+        solve(arr, p + 1, end);
     }
 
     public static int[] generateRandomArray(int maxSize, int maxValue) {
@@ -106,7 +106,7 @@ public class QuickSort {
             int[] arr1 = generateRandomArray(maxSize, maxValue);
             int[] arr2 = copyArray(arr1);
             // 用自己的排序算法排序，例如插入排序
-            quickSort(arr1, 0, arr1.length - 1);
+            solve(arr1, 0, arr1.length - 1);
             // 用系统自带的算法测试一遍
             comparator(arr2);
             if (!isEqual(arr1, arr2)) {

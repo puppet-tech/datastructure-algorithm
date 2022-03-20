@@ -9,7 +9,7 @@ import java.util.Arrays;
  * @since 2022/2/5 8:49 下午
  */
 public class MergeSort {
-    public static void mergeSort(int[] arr) {
+    public static void solve(int[] arr) {
         if (arr == null || arr.length <= 1) {
             return;
         }
@@ -122,7 +122,7 @@ public class MergeSort {
             int[] arr1 = generateRandomArray(maxSize, maxValue);
             int[] arr2 = copyArray(arr1);
             // 用自己的排序算法排序，例如插入排序
-            mergeSort(arr1);
+            solve(arr1);
             // 用系统自带的算法测试一遍
             comparator(arr2);
             if (!isEqual(arr1, arr2)) {
