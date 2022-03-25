@@ -4,14 +4,22 @@ import java.util.ServiceConfigurationError;
 
 /**
  * 简单二分查找的非递归实现
- * 时间复杂度：O(logN)
- * 空间复杂度：O(1)
  *
  * @author puppet
  * @since 2022/2/15 23:18
  */
 public class Demo01SimpleBinarySearch {
 
+    /**
+     * 算法思想: 二分查找
+     * 编程技巧: 双指针
+     *
+     * 时间复杂度：O(logN)
+     * 空间复杂度：O(1)
+     * @param arr
+     * @param target
+     * @return
+     */
     public static int search(int[] arr, int target) {
         int size = arr.length;
         return process(arr, size, target);

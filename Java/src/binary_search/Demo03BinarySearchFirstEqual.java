@@ -2,16 +2,24 @@ package org.example.binary_search;
 
 /**
  * 二分查找变型题：在给定的数组中，查找第一个等于 `target` 元素，如果存在，则返回下标，否则，返回 `-1`。
- * <p>
- * 时间复杂度：O(logN)
- * 空间复杂度：O(1)
  *
  * @author puppet
  * @since 2022/2/15 23:18
  */
 public class Demo03BinarySearchFirstEqual {
 
-    public static int search(int[] arr, int target) {
+    /**
+     * 算法思想：二分查找
+     * 编程技巧：双指针
+     * <p>
+     * 时间复杂度：O(logN)
+     * 空间复杂度：O(1)
+     *
+     * @param arr
+     * @param target
+     * @return
+     */
+    public static int solve(int[] arr, int target) {
         int size = arr.length;
         return process(arr, size, target);
     }
@@ -42,7 +50,7 @@ public class Demo03BinarySearchFirstEqual {
     public static void main(String[] args) {
         int[] arr = {1, 3, 4, 5, 6, 8, 8, 8, 11, 18};
         // int[] arr = {1, 3, 4, 5, 6, 8, 11, 18};
-        int result = search(arr, 8);
+        int result = solve(arr, 8);
         System.out.println(result);
     }
 }
