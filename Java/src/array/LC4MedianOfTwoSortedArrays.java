@@ -8,8 +8,8 @@ package org.example.array;
 public class LC4MedianOfTwoSortedArrays {
     /**
      * 算法思想：归并思想
-     * 编程技巧：双指针 该做法自己想出来的，但不符合要求，要求时间复杂度为：O(log(M+N))
-     * <p>
+     * 编程技巧：双指针
+     * 该做法自己想出来的，但不符合要求，要求时间复杂度为：O(log(M+N))
      * 时间复杂度：O(M+N)
      * 空间复杂度：O(M+N)
      * @param nums1
