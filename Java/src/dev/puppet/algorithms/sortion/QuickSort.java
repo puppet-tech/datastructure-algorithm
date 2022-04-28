@@ -1,4 +1,4 @@
-package org.example.dev.puppet.algorithms.sortion;
+package dev.puppet.algorithms.sortion;
 
 import java.util.Arrays;
 

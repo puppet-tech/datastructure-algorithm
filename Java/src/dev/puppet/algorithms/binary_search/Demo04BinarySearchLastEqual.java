@@ -1,14 +1,14 @@
-package org.example.dev.puppet.algorithms.binary_search;
+package dev.puppet.algorithms.binary_search;
 
 /**
- * 二分查找变型题：在给定的数组中，数据有重复值，查找出第一个大于等于 target 的元素，返回下标，若不存在，返回 -1
+ * 二分查找变型题：在给定的数组中，查找最后一个等于 `target` 元素，如果存在，则返回下标，否则，返回 `-1`。
  * <p>
  * 时间复杂度：O(logN)
  * 空间复杂度：O(1)
  * @author puppet
  * @since 2022/2/15 23:18
  */
-public class Demo05BinarySearchFirstLargeEqual {
+public class Demo04BinarySearchLastEqual {
     
     public static int search(int[] arr, int target) {
         int size = arr.length;
@@ -23,12 +23,14 @@ public class Demo05BinarySearchFirstLargeEqual {
         while (high >= low) {
             // 注意：位运算的优先级跟加减一致，所以要注意括号
             int mid = low + ((high - low) >> 1);
-            if (arr[mid] >= target) {
-                if (mid == 0 || arr[mid - 1] < target) {
+            if (arr[mid] == target) {
+                if (mid == size - 1 || arr[mid + 1] != target) {
                     return mid;
                 } else {
-                    high = mid - 1;
+                    low = mid + 1;
                 }
+            } else if (arr[mid] > target) {
+                high = mid - 1;
             } else {
                 low = mid + 1;
             }

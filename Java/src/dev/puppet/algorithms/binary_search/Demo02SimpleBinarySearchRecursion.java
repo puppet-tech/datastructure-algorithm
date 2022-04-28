@@ -1,4 +1,4 @@
-package org.example.dev.puppet.algorithms.binary_search;
+package dev.puppet.algorithms.binary_search;
 
 /**
  * 简单二分查找的递归实现

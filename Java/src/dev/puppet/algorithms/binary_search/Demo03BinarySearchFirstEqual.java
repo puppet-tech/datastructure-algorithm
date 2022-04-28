@@ -1,4 +1,4 @@
-package org.example.dev.puppet.algorithms.binary_search;
+package dev.puppet.algorithms.binary_search;
 
 /**
  * 二分查找变型题：在给定的数组中，查找第一个等于 `target` 元素，如果存在，则返回下标，否则，返回 `-1`。
