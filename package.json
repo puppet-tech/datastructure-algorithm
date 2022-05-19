@@ -1,0 +1,12 @@
+{
+  "name": "datastructure-algorithm",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:puppetdevz/datastructure-algorithm.git",
+  "author": "puppet <puppetdev@163.com>",
+  "license": "MIT",
+  "scripts": {
+    "push": "python deploy.py --push-src",
+    "pull": "python deploy.py --pull-src"
+  }
+}
