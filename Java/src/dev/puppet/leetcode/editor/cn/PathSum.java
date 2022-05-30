@@ -1,4 +1,4 @@
-  //<p>给你二叉树的根节点&nbsp;<code>root</code> 和一个表示目标和的整数&nbsp;<code>targetSum</code> 。判断该树中是否存在 <strong>根节点到叶子节点</strong> 的路径，这条路径上所有节点值相加等于目标和&nbsp;<code>targetSum</code> 。如果存在，返回 <code>true</code> ；否则，返回 <code>false</code> 。</p>
+//<p>给你二叉树的根节点&nbsp;<code>root</code> 和一个表示目标和的整数&nbsp;<code>targetSum</code> 。判断该树中是否存在 <strong>根节点到叶子节点</strong> 的路径，这条路径上所有节点值相加等于目标和&nbsp;<code>targetSum</code> 。如果存在，返回 <code>true</code> ；否则，返回 <code>false</code> 。</p>
 //
 //<p><strong>叶子节点</strong> 是指没有子节点的节点。</p>
 //
@@ -40,36 +40,37 @@
 //	<li><code>-1000 &lt;= targetSum &lt;= 1000</code></li>
 //</ul>
 //<div><div>Related Topics</div><div><li>树</li><li>深度优先搜索</li><li>广度优先搜索</li><li>二叉树</li></div></div><br><div><li>👍 887</li><li>👎 0</li></div>
-  
-  package dev.puppet.leetcode.editor.cn;
 
-  import dev.puppet.common_data_structures.TreeNode;
+package dev.puppet.leetcode.editor.cn;
 
-  public class PathSum{
-      public static void main(String[] args) {
-           Solution solution = new PathSum().new Solution();
-      }
-      //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
-class Solution {
-    public boolean hasPathSum(TreeNode root, int targetSum) {
+import dev.puppet.common_data_structures.TreeNode;
 
+public class PathSum {
+    public static void main(String[] args) {
+        Solution solution = new PathSum().new Solution();
     }
-}
+    //leetcode submit region begin(Prohibit modification and deletion)
+
+    /**
+     * Definition for a binary tree node.
+     * public class TreeNode {
+     * int val;
+     * TreeNode left;
+     * TreeNode right;
+     * TreeNode() {}
+     * TreeNode(int val) { this.val = val; }
+     * TreeNode(int val, TreeNode left, TreeNode right) {
+     * this.val = val;
+     * this.left = left;
+     * this.right = right;
+     * }
+     * }
+     */
+    class Solution {
+        public boolean hasPathSum(TreeNode root, int targetSum) {
+
+        }
+    }
 //leetcode submit region end(Prohibit modification and deletion)
 
-  }
+}
