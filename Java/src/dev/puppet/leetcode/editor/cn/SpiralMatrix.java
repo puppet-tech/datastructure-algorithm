@@ -1,9 +1,5 @@
 package dev.puppet.leetcode.editor.cn;
 
-import org.omg.CORBA.RepositoryIdHelper;
-
-import java.lang.reflect.WildcardType;
-import java.rmi.MarshalException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +12,9 @@ public class SpiralMatrix {
     public static void main(String[] args) {
         Solution solution = new SpiralMatrix().new Solution();
     }
-    
+
     //leetcode submit region begin(Prohibit modification and deletion)
-    
+
     /**
      * @Tag 数组、模拟
      * @Solution 按层模拟
