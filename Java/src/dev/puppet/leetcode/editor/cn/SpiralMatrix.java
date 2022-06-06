@@ -12,10 +12,11 @@ public class SpiralMatrix {
     public static void main(String[] args) {
         Solution solution = new SpiralMatrix().new Solution();
     }
-
+    
     //leetcode submit region begin(Prohibit modification and deletion)
-
+    
     /**
+     * @Classification 数组
      * @Tag 数组、模拟
      * @Solution 按层模拟
      * @TimeComplexity O(MN) 长宽的积
@@ -35,11 +36,17 @@ public class SpiralMatrix {
                 for (int row = top + 1; row <= bottom; row++) {
                     order.add(matrix[row][right]);
                 }
-                for (int col = right - 1; col > left; col--) {
-                    order.add(matrix[bottom][col]);
+                // 边界例子：如果 top == bottom
+                if (top != bottom) {
+                    for (int col = right - 1; col > left; col--) {
+                        order.add(matrix[bottom][col]);
+                    }
                 }
-                for (int row = bottom; row > top; row--) {
-                    order.add(matrix[row][left]);
+                // 边界例子：left == right
+                if (left != right) {
+                    for (int row = bottom; row > top; row--) {
+                        order.add(matrix[row][left]);
+                    }
                 }
                 left++;
                 right--;
