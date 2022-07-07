@@ -1,4 +1,4 @@
-package dev.puppet.leetcode.editor.cn;
+package dev.puppet.leetcode.editor.cn.data_structures.array;
 
 /**
  * 题目：48 旋转图像
@@ -9,9 +9,9 @@ public class RotateImage {
     public static void main(String[] args) {
         Solution solution = new RotateImage().new Solution();
     }
-    
+
     //leetcode submit region begin(Prohibit modification and deletion)
-    
+
     /**
      * @Tag 数组、数学
      * @Solution 原地旋转
