@@ -55,7 +55,7 @@ public class ReverseLinkedListIi {
     }
 
     //leetcode submit region end(Prohibit modification and deletion)
-    public class ListNode {
+    class ListNode {
         int val;
         ListNode next;
 

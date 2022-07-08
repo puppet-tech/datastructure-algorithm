@@ -1,4 +1,4 @@
-package dev.puppet.leetcode.editor.cn;
+package dev.puppet.leetcode.editor.cn.data_structures.linked_list;
 
 /**
  * 题目：141 环形链表
@@ -22,6 +22,7 @@ public class LinkedListCycle {
  * }
  */
     /**
+     * @Classification 链表
      * @Tag 快慢指针
      * @Solution 根据 Floyd 判圈算法（兔龟赛跑算法），我们可以设置快慢指针，
      *         如果没有环，则快指针会一直在慢指针的前面，两者决不会相遇，直到走到终点
@@ -33,7 +34,7 @@ public class LinkedListCycle {
         public boolean hasCycle(ListNode head) {
             // 如果链表没有节点或只有一个节点时
             if (head == null || head.next == null) return false;
-            
+
             // 定义快慢指针，一开始均指向 head 节点
             ListNode fast = head, slow = head;
             do {
@@ -47,15 +48,15 @@ public class LinkedListCycle {
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
-    
+
     class ListNode {
         int val;
         ListNode next;
-        
+
         ListNode(int x) {
             val = x;
             next = null;
         }
     }
-    
+
 }

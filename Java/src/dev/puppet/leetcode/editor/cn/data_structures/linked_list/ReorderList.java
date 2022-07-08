@@ -1,4 +1,4 @@
-package dev.puppet.leetcode.editor.cn;
+package dev.puppet.leetcode.editor.cn.data_structures.linked_list;
 
 /**
  * 题目：143 重排链表
@@ -23,7 +23,7 @@ public class ReorderList {
      */
     /**
      * @Classification 链表
-     * @Tag 双指针
+     * @Tag 快慢指针
      * @Solution 链表中点 + 反转链表 + 链表合并
      *         根据题意，目标链表其实是：原始链表的前半段 + 原始链表后半段的反转
      *         所以我们可以分为三步：
