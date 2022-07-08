@@ -1,4 +1,4 @@
-package dev.puppet.leetcode.editor.cn;
+package dev.puppet.leetcode.editor.cn.data_structures.linked_list;
 
 /**
  * 题目：160 相交链表
@@ -40,12 +40,12 @@ public class IntersectionOfTwoLinkedLists {
             return pA;
         }
     }
-    
+
     //leetcode submit region end(Prohibit modification and deletion)
     public class ListNode {
         int val;
         ListNode next;
-        
+
         ListNode(int x) {
             val = x;
             next = null;
