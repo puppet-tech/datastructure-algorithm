@@ -1,4 +1,4 @@
-package top.puppetdev.leetcode.editor.cn;
+package top.puppetdev.leetcode.editor.cn.data_structures.linked_list;
 
 /**
  * 题目：148 排序链表
@@ -28,7 +28,7 @@ public class SortList {
      *         2. 分别对两个部分进行递归排序，得到两个有序链表
      *         3. 将两个有序链表进行合并
      *         上述的步骤使用递归实现，递归的终止条件为，当子链表只有一个节点或者为 null 时
-     * @Tip
+     * @Tip 注意在找链表中点的时候，需要将链表截成两段，否则会有问题
      * @TimeComplexity O(nlogn)
      * @SpaceComplexity O(nlogn) 递归栈
      */
@@ -41,11 +41,15 @@ public class SortList {
             // 递归终止条件
             if (head == null || head.next == null) return head;
 
-            // 找到链表中点
+            // 找到链表中点，但需要注意的是，使得链表分为两截
             ListNode mid = getMiddle(head);
+            // 截成两段之前，先将下一个节点给保存起来
+            ListNode temp = mid.next;
+            mid.next = null;
+
             // 分别对两部分链表进行排序
             ListNode list1 = sortList(head, mid);
-            ListNode list2 = sortList(mid.next, tail);
+            ListNode list2 = sortList(temp, tail);
             // 合并两个有序链表，然后将头节点返回
             return mergeList(list1, list2);
         }
@@ -69,8 +73,10 @@ public class SortList {
         }
 
         private ListNode getMiddle(ListNode head) {
-            ListNode slow = head, fast = head;
-            while (fast !=null && fast.next !=null) {
+            ListNode dummyNode = new ListNode();
+            dummyNode.next = head;
+            ListNode slow = dummyNode, fast = dummyNode;
+            while (fast != null && fast.next != null) {
                 slow = slow.next;
                 fast = fast.next.next;
             }
