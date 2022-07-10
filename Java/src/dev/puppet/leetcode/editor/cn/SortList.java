@@ -25,7 +25,7 @@ public class SortList {
         public ListNode sortList(ListNode head) {
             ListNode dummy = new ListNode();
             dummy.next = head;
-
+            
             return dummy.next;
         }
     }
