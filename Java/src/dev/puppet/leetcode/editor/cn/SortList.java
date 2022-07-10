@@ -10,7 +10,7 @@ public class SortList {
         Solution solution = new SortList().new Solution();
     }
     //leetcode submit region begin(Prohibit modification and deletion)
-
+    
     /**
      * Definition for singly-linked list.
      * public class ListNode {
@@ -23,6 +23,7 @@ public class SortList {
      */
     class Solution {
         public ListNode sortList(ListNode head) {
+            
             ListNode dummy = new ListNode();
             dummy.next = head;
             
@@ -30,18 +31,18 @@ public class SortList {
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
-
+    
     class ListNode {
         int val;
         ListNode next;
-
+        
         ListNode() {
         }
-
+        
         ListNode(int val) {
             val = val;
         }
     }
-
-
+    
+    
 }
