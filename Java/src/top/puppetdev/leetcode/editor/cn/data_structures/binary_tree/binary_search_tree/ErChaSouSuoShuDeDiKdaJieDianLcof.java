@@ -1,5 +1,7 @@
 package top.puppetdev.leetcode.editor.cn.data_structures.binary_tree.binary_search_tree;
 
+import top.puppetdev.leetcode.editor.cn.common.TreeNode;
+
 /**
  * 题目：剑指 Offer 54 二叉搜索树的第k大节点
  * @author puppet
@@ -52,13 +54,5 @@ public class ErChaSouSuoShuDeDiKdaJieDianLcof {
     }
 
     //leetcode submit region end(Prohibit modification and deletion)
-    public class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
 
-        TreeNode(int x) {
-            val = x;
-        }
-    }
 }
