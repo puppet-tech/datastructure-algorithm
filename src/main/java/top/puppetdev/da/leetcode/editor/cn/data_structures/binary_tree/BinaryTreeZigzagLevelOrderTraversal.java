@@ -1,9 +1,10 @@
-package top.puppetdev.da.leetcode.editor.cn;
+package top.puppetdev.da.leetcode.editor.cn.data_structures.binary_tree;
 
 import top.puppetdev.da.leetcode.editor.cn.common.TreeNode;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -35,7 +36,7 @@ public class BinaryTreeZigzagLevelOrderTraversal {
      * @Classification 二叉树
      * @Tag 广度优先遍历、队列
      * @Solution 迭代解法
-     *         其实跟“树的层次遍历”思路基本相同，只是需要关注节点加入队列时的顺序，
+     *         其实跟“树的层次遍历”思路基本相同，只是需要关注节点值加入数组时的顺序，
      *         需要定义一个布尔值，控制加入的顺序：先从左到右加入，再从右到左加入，交替执行，下面则是层次遍历的核心点：
      *         1. 定义一个队列，用来存放等待遍历的节点
      *         2. 在遍历每一层开始前，需要先将该层的节点数量统计出来，然后整层进行遍历
@@ -51,18 +52,15 @@ public class BinaryTreeZigzagLevelOrderTraversal {
             queue.add(root);
             boolean flag = true;
             while (!queue.isEmpty()) {
-                ArrayList<Integer> level = new ArrayList<>();
+                // 此处不能定义为 ArrayList，而是要定义为 LinkedList，因为要在数组前面插入值
+                LinkedList<Integer> level = new LinkedList<>();
                 int size = queue.size();
                 for (int i = 0; i < size; i++) {
                     TreeNode node = queue.poll();
-                    level.add(node.val);
-                    if (flag) {
-                        if (node.right != null) queue.add(node.right);
-                        if (node.left != null) queue.add(node.left);
-                    } else {
-                        if (node.left != null) queue.add(node.left);
-                        if (node.right != null) queue.add(node.right);
-                    }
+                    if (node.left != null) queue.add(node.left);
+                    if (node.right != null) queue.add(node.right);
+                    if (flag) level.add(node.val);
+                    else level.addFirst(node.val);
                 }
                 flag = !flag;
                 result.add(level);

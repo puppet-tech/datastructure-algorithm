@@ -2,6 +2,7 @@ package top.puppetdev.da.leetcode.editor.cn;
 
 import top.puppetdev.da.leetcode.editor.cn.common.TreeNode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -9,7 +10,7 @@ import java.util.List;
  * @author puppet
  * @since 2022-07-12 09:11:01
  */
-public class BinaryTreeRightSideView{
+public class BinaryTreeRightSideView {
     public static void main(String[] args) {
         Solution solution = new BinaryTreeRightSideView().new Solution();
     }
@@ -29,11 +30,20 @@ public class BinaryTreeRightSideView{
  *     }
  * }
  */
-class Solution {
-    public List<Integer> rightSideView(TreeNode root) {
-        return null;
+    /**
+     * @Classification 二叉树
+     * @Tag 广度优先遍历、深度优先遍历、队列、递归
+     * @Solution
+     * @TimeComplexity
+     * @SpaceComplexity
+     */
+    class Solution {
+        public List<Integer> rightSideView(TreeNode root) {
+            ArrayList<Integer> integers = new ArrayList<>();
+
+            return integers;
+        }
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
