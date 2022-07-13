@@ -2,17 +2,14 @@ package top.puppetdev.da.leetcode.editor.cn;
 
 import top.puppetdev.da.leetcode.editor.cn.common.TreeNode;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * 题目：199 二叉树的右视图
+ * 题目：110 平衡二叉树
  * @author puppet
- * @since 2022-07-12 09:11:01
+ * @since 2022-07-13 18:35:59
  */
-public class BinaryTreeRightSideView {
+public class BalancedBinaryTree {
     public static void main(String[] args) {
-        Solution solution = new BinaryTreeRightSideView().new Solution();
+        Solution solution = new BalancedBinaryTree().new Solution();
     }
     //leetcode submit region begin(Prohibit modification and deletion)
 /**
@@ -31,17 +28,15 @@ public class BinaryTreeRightSideView {
  * }
  */
     /**
-     * @Classification 二叉树
-     * @Tag 广度优先遍历、深度优先遍历、队列、递归
+     * @Classification
+     * @Tag
      * @Solution
      * @TimeComplexity
      * @SpaceComplexity
      */
     class Solution {
-        public List<Integer> rightSideView(TreeNode root) {
-            ArrayList<Integer> integers = new ArrayList<>();
-
-            return integers;
+        public boolean isBalanced(TreeNode root) {
+            return false;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
