@@ -6,7 +6,7 @@
   "author": "puppet <puppetdev@163.com>",
   "license": "MIT",
   "scripts": {
-    "push": "python $DEPLOY_SCRIPT_PATH --push-src",
-    "pull": "python $DEPLOY_SCRIPT_PATH --pull-src"
+    "push": "deploy.py --push-src",
+    "pull": "deploy.py --pull-src"
   }
 }
