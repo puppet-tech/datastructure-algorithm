@@ -79,7 +79,7 @@ def push_static():
 
 if __name__ == '__main__':
     print('sys.argv is ' + str(sys.argv))
-    print('the path of python is ' + str(sys.path))
+    # print('the path of python is ' + str(sys.path))
     if len(sys.argv) == 1:
         push_src()
         push_static()
