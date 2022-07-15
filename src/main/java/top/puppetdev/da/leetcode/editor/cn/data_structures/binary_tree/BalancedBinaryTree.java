@@ -30,33 +30,28 @@ public class BalancedBinaryTree {
     /**
      * @Classification 二叉树
      * @Tag 深度优先遍历、递归
-     * @Solution 核心思路：如果要判断是否为平衡二叉树，则需要知道当前节点的左右子树高度差是否小于等于 1，
-     *         如果当前节点的左右子树高度差小于等于 1，再进一步判断左右子树的情况
-     *         只要其中有不满足条件的，则递归终止
-     * @TimeComplexity O(N ^ 2)
+     * @Solution 核心思路：如果要判断是否为平衡二叉树，则需要知道当前节点的左右子树深度差是否小于等于 1，
+     *         本质其实是求深度，递归求解每个节点的左右子树的最大深度，然后对左右子树的最大深度进行比较
+     *         如果存在节点的左右子树的深度差大于 1，说明不是二叉平衡树，直接退出迭代
+     * @TimeComplexity O(N)
      * @SpaceComplexity O(N)
      */
     class Solution {
-        private boolean ret = true;
-
+        private boolean ret;
+        
         public boolean isBalanced(TreeNode root) {
-            solve(root);
+            ret = true;
+            getMaxDepth(root);
             return ret;
         }
-
-        private void solve(TreeNode root) {
-            if (root == null || !ret) return;
-            if (Math.abs(getHeight(root.left) - getHeight(root.right)) <= 1) {
-                solve(root.left);
-                solve(root.right);
-            } else {
-                ret = false;
-            }
-        }
-
-        private int getHeight(TreeNode root) {
-            if (root == null) return 0;
-            return Math.max(getHeight(root.left), getHeight(root.right)) + 1;
+        
+        private int getMaxDepth(TreeNode root) {
+            // adding "!ret" can exit the iteration in advance
+            if (root == null || !ret) return 0;
+            int lDepth = getMaxDepth(root.left);
+            int rDepth = getMaxDepth(root.right);
+            if (Math.abs(lDepth - rDepth) > 1) ret = false;
+            return Math.max(lDepth, rDepth) + 1;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
