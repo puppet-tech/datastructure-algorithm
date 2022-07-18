@@ -35,8 +35,19 @@ public class PathSum {
      * @SpaceComplexity
      */
     class Solution {
+        private boolean ans;
+        
         public boolean hasPathSum(TreeNode root, int targetSum) {
-            return false;
+            ans = false;
+            dfs(root, targetSum);
+            return ans;
+        }
+        
+        private void dfs(TreeNode root, int targetSum) {
+            if (targetSum == 0 && root == null) ans = true;
+            int sum = root.val - targetSum;
+            hasPathSum(root.left, sum);
+            hasPathSum(root.right, sum);
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
