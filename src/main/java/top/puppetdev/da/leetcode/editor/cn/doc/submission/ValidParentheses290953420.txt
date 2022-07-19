@@ -1,0 +1,25 @@
+class Solution {
+    public boolean isValid(String s) {
+        Stack<Character> bracketStack = new Stack<>();
+        final HashMap<Character, Character> bracketMap = new HashMap<Character, Character>() {{
+            put('(', ')');
+            put('{', '}');
+            put('[', ']');
+        }};
+        for (int i = 0; i < s.length(); i++) {
+            // 当前遍历到的符号
+            char c = s.charAt(i);
+            if (bracketMap.containsKey(c)) bracketStack.push(c);
+            else {
+                // 如果此时遍历到的是 右括号，而栈中已经没有元素，则直接说明不匹配
+                if (bracketStack.isEmpty()) return false;
+                // 如果存在一组不匹配，直接返回 false
+                if (c != bracketMap.get(bracketStack.pop())) return false;
+            }
+        }
+        // 最后如果栈为空，说明全部匹配成功，是一组有效括号，否则为无效括号
+        return bracketStack.isEmpty();
+    }
+}
+//runtime:2 ms
+//memory:39.2 MB

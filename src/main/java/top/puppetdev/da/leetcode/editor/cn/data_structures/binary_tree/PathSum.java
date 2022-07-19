@@ -1,4 +1,4 @@
-package top.puppetdev.da.leetcode.editor.cn;
+package top.puppetdev.da.leetcode.editor.cn.data_structures.binary_tree;
 
 import top.puppetdev.da.leetcode.editor.cn.common.TreeNode;
 
@@ -29,25 +29,16 @@ public class PathSum {
  */
     /**
      * @Classification 二叉树
-     * @Tag
+     * @Tag 递归、深度优先
      * @Solution
-     * @TimeComplexity
-     * @SpaceComplexity
+     * @TimeComplexity O(N) all nodes needed to be checked
+     * @SpaceComplexity O(H) the height of the tree
      */
     class Solution {
-        private boolean ans;
-        
         public boolean hasPathSum(TreeNode root, int targetSum) {
-            ans = false;
-            dfs(root, targetSum);
-            return ans;
-        }
-        
-        private void dfs(TreeNode root, int targetSum) {
-            if (targetSum == 0 && root == null) ans = true;
-            int sum = root.val - targetSum;
-            hasPathSum(root.left, sum);
-            hasPathSum(root.right, sum);
+            if (root == null) return false;
+            if (root.left == null && root.right == null) return targetSum == root.val;
+            return hasPathSum(root.left, targetSum - root.val) || hasPathSum(root.right, targetSum - root.val);
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)

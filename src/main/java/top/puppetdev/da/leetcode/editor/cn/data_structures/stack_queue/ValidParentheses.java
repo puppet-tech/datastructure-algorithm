@@ -1,4 +1,4 @@
-package top.puppetdev.da.leetcode.editor.cn;
+package top.puppetdev.da.leetcode.editor.cn.data_structures.stack_queue;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -15,7 +15,7 @@ public class ValidParentheses {
         solution.isValid("([)]");
     }
     //leetcode submit region begin(Prohibit modification and deletion)
-    
+
     /**
      * @Classification stack and queue
      * @Tag
@@ -32,17 +32,16 @@ public class ValidParentheses {
         public boolean isValid(String s) {
             Deque<Character> stack = new ArrayDeque<>();
             Map<Character, Character> map = Map.of('(', ')', '{', '}', '[', ']');
-            
+
             for (char c : s.toCharArray()) {
-                if (map.containsKey(c)) {
-                    stack.push(c);
-                } else {
-                    if (!stack.isEmpty() && map.get(stack.pop()) != c) return false;
+                if (map.containsKey(c)) stack.push(c);
+                else {
+                    if (stack.isEmpty()) return false;
+                    if (map.get(stack.pop()) != c) return false;
                 }
             }
             // if the stack is not empty, return false
-            if (!stack.isEmpty()) return false;
-            return true;
+            return stack.isEmpty();
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
