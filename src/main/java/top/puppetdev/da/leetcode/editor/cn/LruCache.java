@@ -10,7 +10,7 @@ public class LruCache {
     //     Solution solution = new LruCache().new Solution();
     // }
     //leetcode submit region begin(Prohibit modification and deletion)
-    
+
     /**
      * 根据题意和 LRU 缓存机制原理，我们需要完成以下的需求：
      * 1. 通过 get 获取元素时，如果元素不存在，直接返回 -1，否则返回元素，并将元素移动至头部，同时时间复杂度要求为 O(1)
@@ -31,7 +31,7 @@ public class LruCache {
      * 以上，满足需求
      * <p>
      * 拓展：
-     * 1.  题目出现 key 和 value，首先想到哈希表
+     * 1. 题目出现 key 和 value，首先想到哈希表
      * 2. 题目中元素有出入顺序，首先想到栈、队列 或 链表
      * @TimeComplexity
      * @SpaceComplexity
@@ -39,17 +39,17 @@ public class LruCache {
      * @Tag hashmap, linked list
      */
     class LRUCache {
-        
+
         public LRUCache(int capacity) {
-        
+
         }
-        
+
         public int get(int key) {
-        
+
         }
-        
+
         public void put(int key, int value) {
-        
+
         }
     }
 
