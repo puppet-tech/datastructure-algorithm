@@ -1,4 +1,4 @@
-package top.puppetdev.da.leetcode.editor.cn;
+package top.puppetdev.da.leetcode.editor.cn.data_structures.hashmap;
 
 import java.util.HashSet;
 import java.util.Set;
