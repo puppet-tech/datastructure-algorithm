@@ -10,15 +10,18 @@ public class AddStrings {
         Solution solution = new AddStrings().new Solution();
     }
     //leetcode submit region begin(Prohibit modification and deletion)
-
+    
     /**
-     * @TimeComplexity
-     * @SpaceComplexity
-     * @Classification
-     * @Tag
+     * simulate vertical operation in mathematics
+     * these are two tricks: 1. pad length with 0; 2. pay attention to the carry
+     * @TimeComplexity N
+     * @SpaceComplexity 1
+     * @Classification string
+     * @Tag string, math, simulation
      */
     class Solution {
         public String addStrings(String num1, String num2) {
+            
             return null;
         }
     }
