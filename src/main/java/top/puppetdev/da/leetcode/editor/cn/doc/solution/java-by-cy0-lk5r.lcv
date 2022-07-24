@@ -1,0 +1,31 @@
+### 解题思路
+
+此处撰写解题思路
+
+### 代码
+
+* java
+
+```java
+class Solution {
+    public String reverseWords(String s) {
+        Deque<String> queue = new LinkedList<>();
+        String[] array = s.split(" ");
+        for (String i : array) {
+            if (!"".equals(i)) {
+                queue.offerFirst(i);
+            }
+        }
+
+        StringBuilder sb = new StringBuilder();
+        while (!queue.isEmpty()) {
+            sb.append(queue.pollFirst()).append(" ");
+        }
+        if (sb.length() != 0) {
+            sb.deleteCharAt(sb.length() - 1);
+        }
+        return sb.toString();
+    }
+}
+```
+

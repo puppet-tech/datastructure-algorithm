@@ -1,0 +1,55 @@
+### 解题思路
+
+这里主要使用了快排的思想, 写代码的时候要注意区间边界.
+
+### 代码
+
+* java
+
+```java
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        int N = nums.length;
+
+        k = N - k;
+
+        return partition(nums, 0, N - 1, k);
+    }
+
+    public int partition(int[] nums, int l, int r, int k){
+        swap(nums, (int)(l + Math.random() * (r - l + 1)), r);
+
+        int min = l - 1;
+        int max = r;
+
+        int i = l;
+        while(i < max){
+            if(nums[i] < nums[r]){
+                swap(nums, ++min, i++);
+            } else if(nums[i] == nums[r]){
+                i++;
+            } else{
+                swap(nums, --max, i);
+            }
+        }
+
+        swap(nums, max, r);
+        max++;
+
+        if(k <= min){
+            return partition(nums, l, min, k);
+        }  else if(k >= max){
+            return partition(nums, max, r, k);
+        }
+
+        return nums[i];
+    }
+
+    public void swap(int[] nums, int i, int j){
+        int tmp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = tmp;
+    }
+}
+```
+

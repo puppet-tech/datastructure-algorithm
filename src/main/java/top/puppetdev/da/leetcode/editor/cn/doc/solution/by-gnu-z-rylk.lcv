@@ -1,0 +1,54 @@
+于一个字符串，我们常常见到的都是英文单词和空格以及各种符号的混合，我们反转其中的单词需要借助空格，但是其中的前导空格和后导空格以及连续空格确实我们在处理字符串问题必须解决的问题，如何解决，最好的方式就是借助while循环来处理空格。如何来确定字符串中那一段是一个完整的单词？我们知道一个完整的单词其前面和后面均是空格，那么再定位到一个单词后，如何获取这一段的索引范围来拿到单词，可以有两种解决方案1.用两个指针来确定单词的索引范围，两个指针之间一定是一个完整的单词2.借助于一个完整单词的起始索引和一个记录单词长度的变量也可以确定单词的索引范围。于是一个初级版本的代码就出现了。
+代码一：
+
+* 
+
+```
+public String reverseWords(String s) {        
+        int index = s.length() - 1,count = 0;
+        StringBuilder sb = new StringBuilder();
+        while(index >= 0){
+            while(index >= 0 && s.charAt(index) == ' ')
+                index--;
+            while(index >= 0 && s.charAt(index) != ' '){
+                count++;
+                index--;
+            }
+            sb.append(s.substring(index+1,index+1+count) + " ");
+            count = 0;
+        }
+        s = sb.toString();
+        return s.trim();
+    }
+```
+
+也可以抛弃对StringBuilder的使用，借助于字符数组来实现，用双指针来确定单词的索引位置，可以到到效率的提升。
+代码二：
+
+* 
+
+```
+public String reverseWords(String s) {
+        char [] from = s.toCharArray();
+        int len = s.length();
+        char [] target = new char[len + 1];
+        int index = len - 1,tIndex = 0;
+        while(index >= 0){
+            while(index >= 0 && from[index] == ' ')
+                index--;//去除空格
+            int right = index;
+            while(index >= 0 && from[index] != ' ') 
+                index--;
+            //有新空格出现，处理上面的单词
+            for(int j = index + 1;j <= right;j++){
+                target[tIndex++] = from[j];
+                if(j == right)
+                    target[tIndex++] = ' ';//这里导致最后一个单词也有空格
+            }                             
+            
+        }
+        return new String(target,0,tIndex - 1);//减一去除最后一个单词的空格
+
+    }
+```
+

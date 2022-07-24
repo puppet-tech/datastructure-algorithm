@@ -1,24 +1,25 @@
 package top.puppetdev.da.leetcode.editor.cn;
 
 /**
- * 题目：151 颠倒字符串中的单词
+ * 题目：43 字符串相乘
  * @author puppet
- * @since 2022-07-22 21:52:22
+ * @since 2022-07-23 23:37:35
  */
-public class ReverseWordsInAString {
+public class MultiplyStrings {
     public static void main(String[] args) {
-        Solution solution = new ReverseWordsInAString().new Solution();
+        Solution solution = new MultiplyStrings().new Solution();
     }
     //leetcode submit region begin(Prohibit modification and deletion)
 
     /**
      * @TimeComplexity
      * @SpaceComplexity
-     * @Classification string
+     * @Classification
      * @Tag
      */
     class Solution {
-        public String reverseWords(String s) {
+        public String multiply(String num1, String num2) {
+            if ("0".equals(num1) || "0".equals(num2)) return "0";
             return null;
         }
     }
