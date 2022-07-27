@@ -1,4 +1,4 @@
-package top.puppetdev.da.leetcode.editor.cn;
+package top.puppetdev.da.leetcode.editor.cn.algos.binary_search;
 
 /**
  * 题目：704 二分查找
@@ -10,7 +10,7 @@ public class BinarySearch {
         Solution solution = new BinarySearch().new Solution();
     }
     //leetcode submit region begin(Prohibit modification and deletion)
-    
+
     /**
      * 有两种解法，一种是迭代，一种是递归，这里采用递归解法
      * @TimeComplexity logN 时间复杂度
@@ -23,7 +23,7 @@ public class BinarySearch {
             int length = nums.length;
             return process(nums, 0, length - 1, target);
         }
-        
+
         private int process(int[] nums, int left, int right, int target) {
             if (left >= right) return nums[left] == target ? left : -1;
             // 去中点，避免整数溢出，同时提升性能
