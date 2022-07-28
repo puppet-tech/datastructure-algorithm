@@ -1,0 +1,36 @@
+class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+    int totalLen = nums1.length + nums2.length;
+        if (totalLen % 2 == 1) {
+            // 说明为奇数
+            return getKth(nums1, nums2, 0, 0, totalLen / 2 + 1);
+        } else {
+            // 说明是偶数
+            return (getKth(nums1, nums2, 0, 0, totalLen / 2) + getKth(nums1, nums2, 0, 0, totalLen / 2 + 1)) / 2;
+        }
+    }
+
+    private double getKth(int[] nums1, int[] nums2, int lp, int rp, int k) {
+        if (lp >= nums1.length || rp >= nums2.length) {
+            // 递归终止条件：当数组 nums1 或 nums2 的剩余长度小于 k/2 时，直接返回另一个数组的第 k 小的数
+            // 因为根据题意，中位数必然存在，所以可以大胆返回第 k 小的值
+            return ((nums1.length - 1) - lp) > ((nums2.length - 1) - rp) ? nums1[lp + k - 1] : nums2[rp + k - 1];
+        }
+        if (k == 1) {
+            // 递归终止条件二：如果 k = 1 时 nums1 和 nums2 的剩余长度不为 0，则比较 nums1 和 nums2 剩余长度中的第一个数，返回较小的数
+            return Math.min(nums1[lp], nums2[rp]);
+        }
+
+        // 分别计算出 nums1 和 nums2 该轮要比较的数的为索引位置
+        int lIndex = nums1.length - 1 - lp >= k / 2 - 1 ? lp + k / 2 - 1 : nums1.length - 1;
+        int rIndex = nums2.length - 1 - rp >= k / 2 - 1 ? rp + k / 2 - 1 : nums2.length - 1;
+
+        if (nums1[lIndex] <= nums2[rIndex]) {
+            return getKth(nums1, nums2, lIndex + 1, rp, k - (lIndex + 1 - lp));
+        } else {
+            return getKth(nums1, nums2, lp, rIndex + 1, k - (rIndex + 1 - rp));
+        }
+    }
+}
+//runtime:1 ms
+//memory:42.1 MB
