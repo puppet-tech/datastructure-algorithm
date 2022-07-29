@@ -1,26 +1,25 @@
 package top.puppetdev.da.leetcode.editor.cn;
 
 /**
- * 题目：912 排序数组
+ * 题目：56 合并区间
  * @author puppet
- * @since 2022-07-29 14:21:26
+ * @since 2022-07-29 21:12:03
  */
-public class SortAnArray {
+public class MergeIntervals {
     public static void main(String[] args) {
-        Solution solution = new SortAnArray().new Solution();
+        Solution solution = new MergeIntervals().new Solution();
     }
     //leetcode submit region begin(Prohibit modification and deletion)
-    
+
     /**
-     * 简单排序，可以用快速排序，也可以用归并排序
      * @TimeComplexity
      * @SpaceComplexity
      * @Classification 算法
-     * @Tag 快速排序
+     * @Tag
      */
     class Solution {
-        public int[] sortArray(int[] nums) {
-            return nums;
+        public int[][] merge(int[][] intervals) {
+            return intervals;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)

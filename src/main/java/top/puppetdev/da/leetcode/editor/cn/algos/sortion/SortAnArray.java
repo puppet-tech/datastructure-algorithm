@@ -3,56 +3,42 @@ package top.puppetdev.da.leetcode.editor.cn.algos.sortion;
 /**
  * 题目：912 排序数组
  * @author puppet
- * @since 2022-05-31 16:28:20
+ * @since 2022-07-29 14:21:26
  */
 public class SortAnArray {
     public static void main(String[] args) {
         Solution solution = new SortAnArray().new Solution();
     }
-
     //leetcode submit region begin(Prohibit modification and deletion)
 
     /**
-     * 快速排序算法
-     * @TimeComplexity nlogn
+     * 简单排序，可以用快速排序，也可以用归并排序
+     * @TimeComplexity logN
      * @SpaceComplexity logN
      * @Classification 算法
-     * @Tag 快排、分治、递归
+     * @Tag 快速排序
      */
     class Solution {
         public int[] sortArray(int[] nums) {
-            if (nums.length <= 1) return nums;
-            int start = 0;
-            int end = nums.length - 1;
-            process(nums, start, end);
+            process(nums, 0, nums.length - 1);
             return nums;
         }
 
         private void process(int[] nums, int start, int end) {
+            // 递归终止条件
             if (start >= end) return;
 
-            int pivot = nums[start];
             int left = start, right = end;
-            while (left < right) {
-                while (left < right) {
-                    if (nums[right] < pivot) {
-                        nums[left] = nums[right];
-                        break;
-                    }
-                    right--;
-                }
-                while (left < right) {
-                    if (nums[left] > pivot) {
-                        nums[right] = nums[left];
-                        break;
-                    }
-                    left++;
-                }
+            int pivot = nums[start];
+            while (start < end) {
+                while (start < end && nums[end] >= pivot) end--;
+                nums[start] = nums[end];
+                while (start < end && nums[start] <= pivot) start++;
+                nums[end] = nums[start];
             }
-            // 注意需要将位置填回去
-            nums[left] = pivot;
-            process(nums, start, left - 1);
-            process(nums, left + 1, end);
+            nums[start] = pivot;
+            process(nums, left, start - 1);
+            process(nums, start + 1, right);
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
