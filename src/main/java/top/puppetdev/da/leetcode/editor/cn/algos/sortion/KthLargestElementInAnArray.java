@@ -1,4 +1,4 @@
-package top.puppetdev.da.leetcode.editor.cn;
+package top.puppetdev.da.leetcode.editor.cn.algos.sortion;
 
 import java.util.Random;
 

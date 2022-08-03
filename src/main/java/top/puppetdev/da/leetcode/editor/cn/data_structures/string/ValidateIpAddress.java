@@ -1,4 +1,4 @@
-package top.puppetdev.da.leetcode.editor.cn;
+package top.puppetdev.da.leetcode.editor.cn.data_structures.string;
 
 /**
  * 题目：468 验证IP地址
@@ -11,7 +11,7 @@ public class ValidateIpAddress {
         solution.validIPAddress("172.16.254.1");
     }
     //leetcode submit region begin(Prohibit modification and deletion)
-
+    
     /**
      * 思路见题解
      * @TimeComplexity N
@@ -23,7 +23,7 @@ public class ValidateIpAddress {
         private static final String ipv4 = "IPv4";
         private static final String ipv6 = "IPv6";
         private static final String invalid = "Neither";
-
+        
         public String validIPAddress(String queryIP) {
             if (queryIP.length() == 0) return invalid;
             char head = queryIP.charAt(0);
@@ -31,7 +31,7 @@ public class ValidateIpAddress {
             if (head == ':' || head == '.' || tail == '.' || tail == ':') return invalid;
             return queryIP.contains(".") ? validIPv4(queryIP) : validIPv6(queryIP);
         }
-
+        
         private String validIPv4(String queryIP) {
             String[] split = queryIP.split("\\.");
             // check length
@@ -54,7 +54,7 @@ public class ValidateIpAddress {
             }
             return ipv4;
         }
-
+        
         private String validIPv6(String queryIP) {
             String[] split = queryIP.split(":");
             // 检查长度，需要被分为 8 个部分
@@ -63,7 +63,7 @@ public class ValidateIpAddress {
                 int length = s.length();
                 // 如果每个部分的长度不在 0-4 之间
                 if (length > 4 || length <= 0) return invalid;
-
+                
                 // 检查每个部分中的每个字符是否为 0-9、a-f、A-F
                 for (int i = 0; i < length; i++) {
                     char c = s.charAt(i);
