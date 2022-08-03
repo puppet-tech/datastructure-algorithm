@@ -3,13 +3,13 @@ package top.puppetdev.da.leetcode.editor.cn;
 import top.puppetdev.da.leetcode.editor.cn.common.TreeNode;
 
 /**
- * 题目：129 求根节点到叶节点数字之和
+ * 题目：958 二叉树的完全性检验
  * @author puppet
- * @since 2022-08-02 22:22:34
+ * @since 2022-08-03 23:44:59
  */
-public class SumRootToLeafNumbers {
+public class CheckCompletenessOfABinaryTree {
     public static void main(String[] args) {
-        Solution solution = new SumRootToLeafNumbers().new Solution();
+        Solution solution = new CheckCompletenessOfABinaryTree().new Solution();
     }
     //leetcode submit region begin(Prohibit modification and deletion)
 
@@ -29,9 +29,8 @@ public class SumRootToLeafNumbers {
      * }
      */
     class Solution {
-        public int sumNumbers(TreeNode root) {
-            int ans = 0;
-            return ans;
+        public boolean isCompleteTree(TreeNode root) {
+            return false;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
