@@ -1,0 +1,80 @@
+### 1、思路
+
+**(bfs)** $O(n)$
+
+完全二叉树的堆式存贮，堆就是一个完全二叉树，而完全二叉树可以用数组表示。我们将一个值为`1~n`的连续数组表示成一个完全二叉树如下图所示：
+
+![在这里插入图片描述](https://pic.leetcode-cn.com/1627542744-JQhFZP-file_1627542744473)
+
+在完全二叉树中，用 `1` 表示根节点编号，则对于任意一个节点 `x`，它的左孩子为 `2*x`，右孩子为 `2*x + 1` 。那么我们可以发现，一颗二叉树是完全二叉树当且仅当节点编号依次为 `1, 2, 3, ...n` 且没有间隙。换句话说，可以将其表示为一个值为`1~n`的连续数组。而在一个值从`1`开始的连续数组中，**数组中最大元素值等于数组大小。** 在根节点编号值为`1`的完全二叉树则是，**节点编号最大值等于节点个数。**
+
+因此，我们可以对一颗二叉树进行**dfs搜索**，如果搜索出的节点编号序列值恰好可以组成一个升序的数组并且编号序列是一个从`1`开始的无间隔的连续数组，则该二叉树为完全二叉树。
+
+**递归函数设计：**
+
+* c
+
+```c
+bool dfs(TreeNode* root , int k) //k是当前节点编号
+```
+
+`root`是当前遍历的节点，`k`是当前节点编号。
+
+**搜索过程如下：**
+
+- 1、我们从根节点开始搜索，并将根节点编号值设置为`1`。
+- 2、然后搜索左子树，并传递其根节点值为`2*k`。搜索右子树，并传递其根节点值为`2*k+1`
+- 3、在递归搜索过程中，记录节点个数`n`和当前最大节点编号值`p`。
+- 4、最后判断最大节点值`p`和节点数`n`是否相等，相等则该二叉树是完全二叉树，否则不是。
+
+**递归边界：**
+
+- 递归到叶子节点，子树递归结束，返回`true`。
+
+**时间复杂度分析：** $O(n)$，其中 $n$是树节点个数 。
+
+### 2、c++代码
+
+* c
+
+```c
+class Solution {
+public:
+    int n = 0, p = 0;  //n是节点数，p是最大节点编号值
+    bool isCompleteTree(TreeNode* root) {
+        if(!dfs(root,1)) return false; //还没有递归到终点就返回false，说明其不是完全二叉树
+        return n == p;  //判断最大节点值是否和节点数相等
+    }
+    bool dfs(TreeNode* root , int k) //k是当前节点编号
+    {
+        if(!root) return true;  //递归到了叶子节点
+        if(k > 100) return false;
+        n++, p = max(p,k); //记录节点数和最大节点编号值
+        return dfs(root->left,2*k)&&dfs(root->right,2*k + 1); //递归左右子树
+    }
+}; 
+```
+
+### 3、java代码
+
+* java
+
+```java
+
+class Solution {
+    int n = 0, p = 0; 
+    public boolean isCompleteTree(TreeNode root) {
+        if(!dfs(root,1)) return false;
+        return n == p;
+    }
+    public boolean dfs(TreeNode root , int k) //k是当前节点编号
+    {
+        if(root == null) return true;  //递归到了叶子节点
+        if(k > 100) return false;
+        n++;  p = Math.max(p,k); //记录节点数和最大节点编号值
+        return dfs(root.left,2*k)&&dfs(root.right,2*k + 1); //递归左右子树
+    }
+}
+```
+
+![在这里插入图片描述](https://pic.leetcode-cn.com/1627542744-KzqGrC-file_1627542744469)
