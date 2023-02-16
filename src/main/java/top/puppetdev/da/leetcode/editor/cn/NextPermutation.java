@@ -3,7 +3,7 @@ package top.puppetdev.da.leetcode.editor.cn;
 /**
  * 题目：31 下一个排列
  * @author puppet
- * @since 2022-08-05 09:59:29
+ * @since 2023-01-11 01:29:42
  */
 public class NextPermutation {
     public static void main(String[] args) {
