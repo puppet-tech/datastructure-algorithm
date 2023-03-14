@@ -1,0 +1,55 @@
+> Problem: [46. 全排列](https://leetcode.cn/problems/permutations/description/)
+
+[TOC]
+
+# 思路
+
+回溯
+可以从一棵树的角度去思考
+
+* 
+
+```
+              [1,2,3]
+      1          2         3       // 第一层  从上往下
+   2    3     1     3    1    2    // 第二层
+3         2 3        1  2      1   // 第三层
+```
+
+我们可以将有三个元素的数组首先分成3种选择，首先看者棵树最左边的一条路径，当我们选择1时，1后面还可以选择2或3，当选择了2后这条路径只剩下3了，刚好这三个数是一个排列。再回去看第二层，如果选择了3，后面只能选择2，刚好一个排列。然后再看第一排一次类推。
+
+我们在选择一个节点后需要将该节点的值记录下来，并且递归处理该节点，递归函数处理后立马删除路径，然后再处理其它的。具体看代码。
+
+# Code
+
+* []
+
+```JavaScript
+
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+const permute = function(nums) {
+    const length = nums.length
+    const path = []  // 记录路径
+    const result = []  // 结果
+    const search = (nodes, path) => {
+        if(path.length === length){ // 当路径长度等于 nums 数组长度说明这是一个排列
+            result.push([...path]) // 这时候将路径储存
+            return // 推出递归
+        }
+
+        for(let i = 0; i < nodes.length; i++){  // 每次将数组的节点全部遍历一边
+            path.push(nodes[i])   // 这一次遍历需要处理这个节点 首先把值存入路径数组
+            const temp = [...nodes]  
+            temp.splice(i,1) // 这一步和上一步意思是这个节点处理完了 不能用了 把剩下的节点继续递归处理
+            search(temp, path)  // 继续递归
+            path.pop()  // 这个节点递归处理完了之后把它从路径中删除  这里要好好想想
+        }
+    }
+    search(nums, path) // 开始递归处理
+    return result 返回结果
+};
+```
+

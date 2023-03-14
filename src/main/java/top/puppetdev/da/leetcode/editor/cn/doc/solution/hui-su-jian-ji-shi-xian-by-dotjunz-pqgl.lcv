@@ -1,0 +1,42 @@
+> Problem: [93. 复原 IP 地址](https://leetcode.cn/problems/restore-ip-addresses/description/)
+
+[TOC]
+
+# 思路
+
+> 回溯。简洁实现。
+
+# Code
+
+* []
+
+```Java
+
+class Solution {
+    List<String> res = new ArrayList<>();  // 保存最终结果
+    List<String> path = new ArrayList<>();  // 保存某条路径结果
+
+    public List<String> restoreIpAddresses(String s) {
+        backtrack(s, 0);
+        return res;
+    }
+
+    void backtrack(String s, int ind){  // ind 表示当前分割的起始位置
+        if(ind == s.length() && path.size() == 4){  // 递归终止条件：到字符串结尾了 且 有4个数字
+            res.add(String.join(".", path));  // 保存符合要求的情况
+            return;
+        }
+        if(path.size() > 4) return;  // 剪枝
+
+        for(int i = ind; i < Math.min(s.length(), ind + 3); i++){  // 最多三位数字
+            String str = s.substring(ind, i + 1);  // 取子串
+            if(Integer.valueOf(str) > 255 || (s.charAt(ind) == '0' && i > ind)) break;  // 过滤不合法的IP地址：大于255 和 开头是0且长度大于1的情况
+            // 回溯模板
+            path.add(str);  
+            backtrack(s, i + 1);
+            path.remove(path.size() - 1);  
+        }
+    }
+}
+```
+
