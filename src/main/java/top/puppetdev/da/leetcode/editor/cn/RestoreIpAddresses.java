@@ -23,25 +23,25 @@ public class RestoreIpAddresses {
 
         public List<String> restoreIpAddresses(String s) {
             // visited = new boolean[s.length()];
-            backtrack(s, 4,new ArrayList<>());
+            backtrack(s, 0, new ArrayList<>());
             return res;
         }
 
-        private void backtrack(String s, int step, List<String> tmp) {
-            if (tmp.size() == 4 && tmp.stream().allMatch(item -> {
-                int length = item.length();
-                int value = Integer.parseInt(item);
-                return (0 < length && length <= 3) && (length > 1 && item.charAt(0) != '0') && (0 <= value && value <= 255);
-            })) {
+        private void backtrack(String s, int ind, List<String> tmp) {
+            if (tmp.size() > 4) return;
+            if (ind == s.length() && tmp.size() == 4) {
                 res.add(String.join(".", tmp));
                 return;
-            } else {
-                // 其他情况说明不满足条件，剪枝
-                return;
             }
-            for (int i = 0; i < step; i++) {
-                // if (visited[i]) continue;
-                tmp.add()
+            for (int i = ind; i < Math.min(s.length(), ind + 3); i++) {
+                String substring = s.substring(ind, i + 1);
+                // 对拿到的子串进行判断，不符合的直接剪枝
+                int length = substring.length();
+                int value = Integer.parseInt(substring);
+                if (value > 255 || (length > 1 && substring.charAt(0) == '0')) break;
+                tmp.add(substring);
+                backtrack(s, i + 1, tmp);
+                tmp.remove(tmp.size() - 1);
             }
         }
     }
