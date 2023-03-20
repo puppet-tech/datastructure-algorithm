@@ -1,0 +1,23 @@
+在做完 [982. 按位与为零的三元组](https://leetcode.cn/problems/triples-with-bitwise-and-equal-to-zero/description/) 看题解时发现了一个求二进制子集的优美的写法，特地过来看看，竟然没发现有人使用。
+
+若不理解，解释在982题我的题解中：[[理解/图示] 位运算求子集 理解图示](https://leetcode.cn/problems/triples-with-bitwise-and-equal-to-zero/solutions/2146233/li-jie-tu-shi-wei-yun-suan-qiu-zi-ji-li-c7gx3/?page=3)
+
+* python3
+
+```python
+class Solution:
+    def subsets(self, nums: List[int]) -> List[List[int]]:
+        def bits_mapping(bits_str: int) -> List[int]:
+            ''' 二进制位转换为nums的子集 '''
+            bits_str = str(bin(m))[2:].zfill(n)
+            return [nums[i] for i, x in enumerate(bits_str) if x == '1']
+
+        n = len(nums)
+        ans = [nums]
+        m = M = (1 << n) - 1
+        while m:
+            m = (m - 1) & M
+            ans.append(bits_mapping(m))
+        return ans
+```
+
