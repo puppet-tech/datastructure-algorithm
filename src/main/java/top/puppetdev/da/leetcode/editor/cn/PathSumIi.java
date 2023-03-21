@@ -2,6 +2,7 @@ package top.puppetdev.da.leetcode.editor.cn;
 
 import top.puppetdev.da.leetcode.editor.cn.common.TreeNode;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,8 +32,10 @@ public class PathSumIi {
      * }
      */
     class Solution {
-        public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
+        List<List<Integer>> ret = new ArrayList<>();
 
+        public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
+            return ret;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
