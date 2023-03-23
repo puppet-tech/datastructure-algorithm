@@ -33,9 +33,23 @@ public class PathSumIi {
      */
     class Solution {
         List<List<Integer>> ret = new ArrayList<>();
+        List<Integer> path = new ArrayList<>();
 
         public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
+            backtrack(root, targetSum);
             return ret;
+        }
+
+        private void backtrack(TreeNode root, int targetSum) {
+            if (root == null) return;
+            path.add(root.val);
+            targetSum -= root.val;
+            if (targetSum == 0 && root.left == null && root.right == null) {
+                ret.add(new ArrayList<>(path));
+            }
+            backtrack(root.left, targetSum);
+            backtrack(root.right, targetSum);
+            path.remove(path.size() - 1);
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
