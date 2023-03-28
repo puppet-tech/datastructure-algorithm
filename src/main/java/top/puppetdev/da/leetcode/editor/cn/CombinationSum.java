@@ -20,8 +20,23 @@ public class CombinationSum {
         List<Integer> path = new ArrayList<>();
 
         public List<List<Integer>> combinationSum(int[] candidates, int target) {
-
+            backtrack(candidates, target);
             return ret;
+        }
+
+        private void backtrack(int[] candidates, int target) {
+            if (target < 0) return;
+
+            for (int i = 0; i < candidates.length; i++) {
+                path.add(candidates[i]);
+                target -= candidates[i];
+                if (target == 0) {
+                    ret.add(new ArrayList<>(path));
+                    return;
+                }
+                backtrack(candidates, target);
+                path.remove(path.size() - 1);
+            }
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
