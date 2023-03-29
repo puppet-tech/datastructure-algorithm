@@ -25,7 +25,6 @@ public class CombinationSum {
         }
 
         private void backtrack(int[] candidates, int target) {
-            if (target < 0) return;
 
             for (int i = 0; i < candidates.length; i++) {
                 path.add(candidates[i]);
@@ -34,8 +33,14 @@ public class CombinationSum {
                     ret.add(new ArrayList<>(path));
                     return;
                 }
+                if (target < 0) {
+                    path.remove(path.size() - 1);
+                    target += candidates[i];
+                    continue;
+                }
                 backtrack(candidates, target);
                 path.remove(path.size() - 1);
+                target += candidates[i];
             }
         }
     }
