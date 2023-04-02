@@ -1,6 +1,8 @@
 package top.puppetdev.da.leetcode.editor.cn;
 
+import javax.swing.text.html.parser.TagElement;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -11,6 +13,7 @@ import java.util.List;
 public class CombinationSum {
     public static void main(String[] args) {
         Solution solution = new CombinationSum().new Solution();
+        solution.combinationSum(new int[]{2, 3, 6, 7}, 7);
     }
 
     //leetcode submit region begin(Prohibit modification and deletion)
@@ -20,27 +23,21 @@ public class CombinationSum {
         List<Integer> path = new ArrayList<>();
 
         public List<List<Integer>> combinationSum(int[] candidates, int target) {
-            backtrack(candidates, target);
+            Arrays.sort(candidates);
+            backtrack(candidates, target, 0);
             return ret;
         }
 
-        private void backtrack(int[] candidates, int target) {
-
-            for (int i = 0; i < candidates.length; i++) {
+        private void backtrack(int[] candidates, int target, int begin) {
+            if (target == 0) {
+                ret.add(new ArrayList<>(path));
+                return;
+            }
+            if (target < 0) return;
+            for (int i = begin; i < candidates.length; i++) {
                 path.add(candidates[i]);
-                target -= candidates[i];
-                if (target == 0) {
-                    ret.add(new ArrayList<>(path));
-                    return;
-                }
-                if (target < 0) {
-                    path.remove(path.size() - 1);
-                    target += candidates[i];
-                    continue;
-                }
-                backtrack(candidates, target);
+                backtrack(candidates, target - candidates[i], i);
                 path.remove(path.size() - 1);
-                target += candidates[i];
             }
         }
     }
