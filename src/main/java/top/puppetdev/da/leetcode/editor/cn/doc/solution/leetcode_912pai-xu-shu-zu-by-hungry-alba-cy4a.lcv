@@ -1,0 +1,61 @@
+> Problem: [912. 排序数组](https://leetcode.cn/problems/sort-an-array/description/)
+
+[TOC]
+
+# 注解
+
+代码可以通过，但是效率并不高。
+
+这道题就是中规中矩的归并排序算法的考察。看到评论区有大佬分析测试样例对于快排不利，所以先练习归并排序再去学习更高级的快速排序。
+
+# 问题记录
+
+主要是在定义中间数组时，使用了两种方法。第1种可以通过所有测试样例；第2种在某些样例会报堆缓冲区溢出错误。记录下来，希望有大佬指点并且日后能快速回忆。
+
+# Code
+
+* []
+
+```C++
+
+// 定义中间数组 1
+const int N = 50010;
+int temp[N];
+
+class Solution {
+public:
+    void mergeSort(int l, int r, vector<int> &arr) {
+        if(l >= r) return ;
+        int mid = (l + r) >> 1;
+        mergeSort(l, mid, arr);
+        mergeSort(mid + 1, r, arr);
+
+        int k = 0, m = l, n = mid + 1;
+        while(m <= mid && n <= r) {
+            if(arr[m] <= arr[n])
+                temp[k++] = arr[m++];
+            else 
+                temp[k++] = arr[n++];
+        }
+        while(m <= mid) {
+            temp[k++] = arr[m++];
+        }
+        while(n <= r) {
+            temp[k++] = arr[n++];
+        }
+
+        for(int i = l, j = 0; i <= r; ++i, ++j)
+            arr[i] = temp[j];
+    }
+
+    vector<int> sortArray(vector<int>& nums) {
+        mergeSort(0, nums.size() - 1, nums);
+        return nums;
+    }
+
+// 定义中间数组 2
+// private:
+//     vector<int> temp = vector<int> (5*10^4+10);
+};
+```
+

@@ -25,10 +25,20 @@ public class SortAnArray {
             int left = start, right = end;
             int pivot = nums[start];
             while (left < right) {
-                while (left < right && nums[right] > pivot) right--;
-                nums[left] = nums[right];
-                while (left < right && nums[left] < pivot) left++;
-                nums[right] = nums[left];
+                while (left < right) {
+                    if (nums[right] < pivot) {
+                        nums[left] = nums[right];
+                        break;
+                    }
+                    right--;
+                }
+                while (left < right) {
+                    if (nums[left] > pivot) {
+                        nums[right] = nums[left];
+                        break;
+                    }
+                    left++;
+                }
             }
             nums[left] = pivot;
             // 用递归进一步分区
