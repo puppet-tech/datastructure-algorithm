@@ -8,7 +8,7 @@ import java.util.HashMap;
  * @author puppet
  * @since 2023-04-09 02:08:53
  */
-public class LruCache {
+public class LruCache2 {
     //    public static void main(String[] args) {
 //        Solution solution = new LruCache().new Solution();
 //    }
