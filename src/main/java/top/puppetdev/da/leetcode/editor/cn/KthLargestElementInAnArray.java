@@ -15,40 +15,29 @@ public class KthLargestElementInAnArray {
 
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
-        int ans;
 
         public int findKthLargest(int[] nums, int k) {
             if (nums.length == 1) return nums[0];
-            this.process(nums, 0, nums.length - 1, nums.length - k);
-            return ans;
+            return this.process(nums, 0, nums.length - 1, nums.length - k + 1);
         }
 
-        private void process(int[] nums, int start, int end, int k) {
-            if (start >= end) return;
+        private int process(int[] nums, int start, int end, int k) {
+            if (start >= end) return nums[start];
             int pivot = nums[start], left = start, right = end;
             while (left < right) {
-                while (left < right) {
-                    if (nums[right] < pivot) {
-                        nums[left] = nums[right];
-                        break;
-                    }
+                while (left < right && nums[right] >= pivot) {
                     right--;
                 }
-                while (left < right) {
-                    if (nums[left] > pivot) {
-                        nums[right] = nums[left];
-                        break;
-                    }
+                nums[left] = nums[right];
+                while (left < right && nums[left] <= pivot) {
                     left++;
                 }
-            }
-            if (left == k) {
-                ans = pivot;
-                return;
+                nums[right] = nums[left];
             }
             nums[left] = pivot;
-            if (left > k) process(nums, start, left - 1, k);
-            if (left < k) process(nums, left + 1, end, k);
+            if (left == k - 1) return nums[left];
+            else if (left > k - 1) return process(nums, start, left - 1, k);
+            else return process(nums, left + 1, end, k);
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
