@@ -69,5 +69,5 @@ public class MergeTwoSortedLists {
             this.val = val;
             this.next = next;
         }
-
     }
+}
