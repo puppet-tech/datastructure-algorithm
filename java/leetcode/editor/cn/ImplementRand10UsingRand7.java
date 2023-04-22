@@ -17,7 +17,11 @@ public class ImplementRand10UsingRand7{
  */
 class Solution extends SolBase {
     public int rand10() {
-        
+        int ans;
+        do {
+            ans = (rand7() - 1) * 7 + rand7();
+        } while (ans > 40);
+        return ans % 10 + 1;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
